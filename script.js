@@ -101,9 +101,9 @@ function settaImpegno(){
 
     console.log(InputGiorno)
 
-
-
-
+    document.getElementById("giorno").value = ""
+    document.getElementById("ora").value = ""
+    document.getElementById("titolo").value = ""
 }
 
 calcolaGiorni();
