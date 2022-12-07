@@ -80,12 +80,29 @@ function inserisciInput(mese){
     const finestraInput = document.getElementById("inputFinestra")
     //console.log(finestraInput)
     finestraInput.innerHTML = 
-        `<input type="number" title="data" placeholder="giorno" min="1" max="${mesi[mese].giorni}">
-            <input type="time" title="ora" id="Ora">
+        `   <input type="number" title="data" placeholder="giorno" id="giorno" min="1" max="${mesi[mese].giorni}">
+            <input type="time" title="ora" id="ora">
             <br>
-            <input type="text" id="Titolo" placeHolder="Titolo">
-            <input type="text" id="Descrizione" placeHolder="Descrizione">
-                                                `
+            <input type="text" id="titolo" placeHolder="Titolo">
+            
+            <br>
+            <button onclick="settaImpegno()">Invia </button>`
+            //<input type="text" id="descrizione" placeHolder="Descrizione">
+
+}
+function settaImpegno(){
+    const InputGiorno = document.getElementById("giorno").value
+    const InputOra = document.getElementById("ora").value
+    const InputTitolo = document.getElementById("titolo").value
+    //const InputDescrizione = document.getElementById("descrizione").value
+
+    const caselle = document.getElementsByClassName("giorno")
+    caselle[InputGiorno-1].innerHTML += `<p>${InputOra}: ${InputTitolo}</p>`
+
+    console.log(InputGiorno)
+
+
+
 
 }
 
