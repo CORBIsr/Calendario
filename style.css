@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color:  rgb(6, 6, 87);
+}
+/*
+    HEADER
+*/
+.header-principale{
+    background-color: blue;
+    padding: 8px;
+    font-size: larger;
+    display: flex;
+    color: white;
+}
+.header-secondario{
+    background-color: rgb(8, 8, 170);
+    padding: 8px;
+    font-size: larger;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.header-principale h1{
+    margin: 0 auto;
+}
+.header-secondario h4{
+    margin: 0 auto;
+    color: white;
+    cursor: pointer;
+}
+
+ /*
+    MAIN
+ */
+#quadrati{
+    display: flex;
+    padding: 30px;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+.giorno{
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 10px;
+    border: solid black 2px;
+    margin: 10px;
+}
+.giorno h3{
+    background-color: red;
+    border-radius: 7px 7px 0 0;
+    border-bottom: solid black 1px;
+}
+
+/*
+    FOOTER
+*/
+
+.finestra{
+    background-color: rgb(8, 8, 170);
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    height: 200px;
+    border-top: solid white 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
