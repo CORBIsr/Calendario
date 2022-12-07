@@ -13,6 +13,13 @@ const listaMesi = [
     "novembre",
     "dicembre"
 ]
+let meseVisualizzato
+let impegni = []
+    /*mese
+      giorno
+      titolo
+      orario*/
+
 const giorniInMese = [31,28,31,30,31,30,31,31,30,31,30,31]
 const data = new Date()
 
@@ -28,7 +35,17 @@ function calcolaGiorni(){
 }
 
 //console.log(mesi)
+function aggiorna(){
+    localStorage.setItem("Calendario", JSON.stringify(impegni))
+}
 function caricamento(){
+
+    if(JSON.parse(localStorage.getItem("Calendario")) == null){
+        localStorage.setItem("Calendario", JSON.stringify(impegni))
+    }else{
+        impegni = JSON.parse(localStorage.getItem("Calendario")  || [])
+    }
+    
     const mese = meseCorrente()
     creaQuadrati(mese) 
 }
@@ -47,6 +64,7 @@ function giornoCorrente(){
 */
 
 function creaQuadrati(mese){
+    meseVisualizzato = mese
     document.getElementById("quadrati").innerHTML = ""
     const nGiorni = mesi[mese].giorni
     for (let i = 0; i < nGiorni; i++) {
@@ -67,6 +85,19 @@ function creaQuadrati(mese){
         coloraGiorno()
     }
     inserisciInput(mese)
+
+    //inserisco gli impegni
+    for (let index = 0; index < impegni.length; index++) {
+        if(impegni[index].mese == meseVisualizzato){
+            /*mese
+            giorno
+            titolo
+            orario*/
+            const caselle = document.getElementsByClassName("giorno")
+            caselle[impegni[index].giorno].innerHTML += `<p>${impegni[index].orario}: ${impegni[index].titolo}</p>`
+        }
+        
+    }
 }
 
 function coloraGiorno(){
@@ -104,6 +135,19 @@ function settaImpegno(){
     document.getElementById("giorno").value = ""
     document.getElementById("ora").value = ""
     document.getElementById("titolo").value = ""
+    console.log(meseVisualizzato)
+    const impegno = {
+        /*mese
+        giorno
+        titolo
+        orario*/
+        mese: meseVisualizzato,
+        giorno: InputGiorno-1,
+        titolo: InputTitolo,
+        orario: InputOra
+    }
+    impegni.push(impegno)
+    aggiorna()
 }
 
 calcolaGiorni();
