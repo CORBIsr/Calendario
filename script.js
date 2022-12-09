@@ -26,15 +26,15 @@ const data = new Date()
 
 function calcolaGiorni(){
     for (let i = 0; i < 12; i++) {
-        let mese = {
+        let elemento = {
             mese: listaMesi[i],
             giorni: giorniInMese[i]
         }
         // if((anniBisestili.includes(data.getFullYear()) )&& i == 1){
-        //     mese.mese = 29
+        //     elemento.mese = 29
         //     console.log("vdfsd")
         // }
-        mesi.push(mese)
+        mesi.push(elemento)
         
     }
 }
