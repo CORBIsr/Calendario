@@ -21,7 +21,7 @@ let impegni = []
       orario*/
 
 const giorniInMese = [31,28,31,30,31,30,31,31,30,31,30,31]
-const anniBisestili = [2022, 2024, 2028, 2032, 2036, 2040, 2044, 2048]
+const anniBisestili = [2024, 2028, 2032, 2036, 2040, 2044, 2048]
 const data = new Date()
 
 function calcolaGiorni(){
@@ -30,13 +30,14 @@ function calcolaGiorni(){
             mese: listaMesi[i],
             giorni: giorniInMese[i]
         }
-        // if((anniBisestili.includes(data.getFullYear()) )&& i == 1){
-        //     elemento.mese = 29
-        //     console.log("vdfsd")
-        // }
+        if((anniBisestili.includes(data.getFullYear()) )&& i == 1){
+            elemento.giorni = 29
+            // console.log(elemento.giorni)
+        }
         mesi.push(elemento)
         
     }
+    // console.log(mesi)
 }
 
 //console.log(mesi)
@@ -136,12 +137,12 @@ function settaImpegno(){
     const caselle = document.getElementsByClassName("giorno")
     caselle[InputGiorno-1].innerHTML += `<p>${InputOra}: ${InputTitolo}</p>`
 
-    console.log(InputGiorno)
+    // console.log(InputGiorno)
 
     document.getElementById("giorno").value = ""
     document.getElementById("ora").value = ""
     document.getElementById("titolo").value = ""
-    console.log(meseVisualizzato)
+    // console.log(meseVisualizzato)
     const impegno = {
         /*mese
         giorno
