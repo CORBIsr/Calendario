@@ -21,6 +21,7 @@ let impegni = []
       orario*/
 
 const giorniInMese = [31,28,31,30,31,30,31,31,30,31,30,31]
+const anniBisestili = [2022, 2024, 2028, 2032, 2036, 2040, 2044, 2048]
 const data = new Date()
 
 function calcolaGiorni(){
@@ -29,6 +30,10 @@ function calcolaGiorni(){
             mese: listaMesi[i],
             giorni: giorniInMese[i]
         }
+        // if((anniBisestili.includes(data.getFullYear()) )&& i == 1){
+        //     mese.mese = 29
+        //     console.log("vdfsd")
+        // }
         mesi.push(mese)
         
     }
@@ -39,6 +44,7 @@ function aggiorna(){
     localStorage.setItem("Calendario", JSON.stringify(impegni))
 }
 function caricamento(){
+    calcolaGiorni();
 
     if(JSON.parse(localStorage.getItem("Calendario")) == null){
         localStorage.setItem("Calendario", JSON.stringify(impegni))
@@ -150,5 +156,5 @@ function settaImpegno(){
     aggiorna()
 }
 
-calcolaGiorni();
+
 caricamento();
