@@ -46,6 +46,7 @@ function aggiorna(){
 }
 function caricamento(){
     calcolaGiorni();
+    inserisciAnno();
 
     if(JSON.parse(localStorage.getItem("Calendario")) == null){
         localStorage.setItem("Calendario", JSON.stringify(impegni))
@@ -156,6 +157,9 @@ function settaImpegno(){
     impegni.push(impegno)
     aggiorna()
 }
-
+function inserisciAnno(){
+    const a = document.getElementsByTagName("h1")
+    a[0].innerHTML += " " + data.getFullYear()
+}
 
 caricamento();
